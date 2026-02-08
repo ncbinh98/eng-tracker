@@ -55,6 +55,7 @@ elements.checkinBtn.addEventListener("click", async () => {
 });
 
 async function fetchData() {
+  renderHeatmapLoading();
   try {
     const response = await fetch(SCRIPT_URL);
     const data = await response.json();
@@ -63,6 +64,15 @@ async function fetchData() {
   } catch (error) {
     console.error("Fetch Error:", error);
     // Optional: Show error toast
+  }
+}
+
+function renderHeatmapLoading() {
+  elements.calendar.innerHTML = "";
+  for (let i = 0; i < 35; i++) {
+    const dayDiv = document.createElement("div");
+    dayDiv.className = "day-dot loading";
+    elements.calendar.appendChild(dayDiv);
   }
 }
 

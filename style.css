@@ -21,7 +21,7 @@
 
 /* Custom Component Styles */
 .premium-card {
-  @apply bg-bg-card border border-slate-800 shadow-2xl relative overflow-hidden;
+  @apply bg-bg-card border border-slate-800 shadow-2xl relative;
   box-shadow: 0 0 40px -10px rgba(0,0,0,0.5);
 }
 
@@ -64,7 +64,7 @@
 
 /* Tooltip */
 .tooltip {
-  @apply absolute bottom-full left-1/2 -translate-x-1/2 mb-2 w-max max-w-[200px] bg-slate-900 border border-slate-700 text-white text-[10px] p-2 rounded-lg shadow-xl opacity-0 invisible transition-all duration-200 pointer-events-none z-50;
+  @apply absolute bottom-full left-1/2 -translate-x-1/2 mb-2 w-max max-w-[200px] bg-slate-900 border border-slate-700 text-white text-[10px] p-2 rounded-lg shadow-xl opacity-0 invisible transition-all duration-200 pointer-events-none z-[100];
 }
 
 .day-dot:hover .tooltip,

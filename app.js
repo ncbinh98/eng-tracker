@@ -24,6 +24,13 @@ let appData = { books: [], progress: [] };
 // Initialize
 document.addEventListener("DOMContentLoaded", fetchData);
 
+// Global click to clear tooltips (Touch support)
+document.addEventListener("click", (e) => {
+  if (!e.target.closest(".day-dot")) {
+    document.querySelectorAll(".day-dot.active").forEach((el) => el.classList.remove("active"));
+  }
+});
+
 // Add Book
 elements.bookForm.addEventListener("submit", async (e) => {
   e.preventDefault();
@@ -188,9 +195,16 @@ function renderCalendar() {
     if (count > 4) level = 3;
 
     dayDiv.className = "day-dot group";
-    dayDiv.setAttribute("data-level", level);
-
+    dayDiv.dataset.level = level;
     if (dateStr === todayStr) dayDiv.classList.add("today");
+
+    // Touch Support: Toggle tooltip on click
+    dayDiv.addEventListener("click", (e) => {
+      e.stopPropagation();
+      const isActive = dayDiv.classList.contains("active");
+      document.querySelectorAll(".day-dot.active").forEach((el) => el.classList.remove("active"));
+      if (!isActive) dayDiv.classList.add("active");
+    });
 
     // Tooltip HTML
     let tooltipHTML = `<div class="font-bold border-b border-white/10 pb-1 mb-1">${dateStr}</div>`;

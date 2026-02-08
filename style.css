@@ -67,7 +67,8 @@
   @apply absolute bottom-full left-1/2 -translate-x-1/2 mb-2 w-max max-w-[200px] bg-slate-900 border border-slate-700 text-white text-[10px] p-2 rounded-lg shadow-xl opacity-0 invisible transition-all duration-200 pointer-events-none z-50;
 }
 
-.day-dot:hover .tooltip {
+.day-dot:hover .tooltip,
+.day-dot.active .tooltip {
   @apply opacity-100 visible -translate-y-1;
 }
 
